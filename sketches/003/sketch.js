@@ -35,7 +35,7 @@ function theloop() {
 	for (var x = 0; x < cols; x++) {
 		for (var y = 0; y < rows; y++) {
 			var a = img.get(x + mouseX * scalingX, y + mouseY * scalingY);
-
+			var bri = brightness(a);
 			var briInverted = 255 - bri;
 
 			var size = map(bri, 0, 255, 7, 0);
