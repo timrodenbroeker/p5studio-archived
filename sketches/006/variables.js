@@ -11,18 +11,9 @@ var output;
 
 var font1;
 
-var composers = [
-  "Bach",
-  "Debussy",
-  "Ravel",
-  "Reich",
-  "Cage",
-  "Beethoven",
-  "Tarrega",
-  "Stockhausen"
-];
+var composers = ['Bach', 'Debussy', 'Ravel', 'Reich', 'Cage', 'Beethoven', 'Tarrega', 'Stockhausen'];
 
-var txt = "THE KINETIC SOUND ENSEMBLE ";
+var txt = 'THE KINETIC SOUND ENSEMBLE ';
 var fontSize = 100;
 var txtInput;
 

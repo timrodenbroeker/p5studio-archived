@@ -3,6 +3,8 @@ var fg = '#111111';
 var cols, rows, itemW, itemH;
 var img;
 
+var imgCounter = 0;
+
 function setup() {
 	img = loadImage('118553.jpg');
 	createCanvas(586, 810);
