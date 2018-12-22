@@ -1,9 +1,9 @@
 function setup() {
 	setupUI();
-	font1 = loadFont('../../fonts/smm.otf');
+	font1 = loadFont('../../fonts/FjallaOne-Regular.ttf');
+	font2 = loadFont('../../fonts/Poppins-Bold.ttf');
 	createCanvas(586, 810);
 	rectMode(CENTER);
-	textFont(font1);
 }
 
 function draw() {
@@ -21,5 +21,6 @@ function draw() {
 
 	if (showBranding) {
 		branding();
+		metaInfos();
 	}
 }

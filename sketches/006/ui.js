@@ -1,44 +1,131 @@
+var sliderFontSize,
+	sliderFontSizeLabel,
+	sliderLineHeight,
+	sliderLineHeightLabel,
+	sliderPhase,
+	sliderPhaseLabel,
+	sliderPos,
+	sliderPosLabel,
+	sliderMetaPosX,
+	sliderMetaPosXLabel,
+	sliderMetaPosY,
+	sliderMetaPosYLabel,
+	sliderTypoPosY,
+	sliderTypoPosYLabel;
+
+var posYStep = 25;
+
 function setupUI() {
-  var posY = 20;
+	var posY = 20;
 
-  sliderFontSize = createSlider(20, 255, 100);
-  sliderFontSize.position(20, posY);
+	/*
+ =========================================
+   Slider FontSize
+   =========================================
+   */
 
-  posY += 20;
+	sliderFontSize = createSlider(20, 255, 100);
+	sliderFontSize.position(20, posY);
+	sliderFontSizeLabel = createDiv('font size');
+	sliderFontSizeLabel.position(200, posY);
 
-  sliderLineHeight = createSlider(0, 1.2, 1, 0.01);
-  sliderLineHeight.position(20, posY);
+	posY += posYStep;
 
-  posY += 20;
+	/*
+ =========================================
+   slider LineHeight
+   =========================================
+   */
 
-  sliderTypePos = createSlider(0, height, 0);
-  sliderTypePos.position(20, posY);
+	sliderLineHeight = createSlider(0, 1.2, 1, 0.01);
+	sliderLineHeight.position(20, posY);
+	sliderLineHeightLabel = createDiv('line-height');
+	sliderLineHeightLabel.position(200, posY);
 
-  posY += 20;
+	posY += posYStep;
 
-  sliderPhase = createSlider(0, 2000, 100);
-  sliderPhase.position(20, posY);
+	/*
+ =========================================
+   sliderTypePos
+   =========================================
+   */
 
-  posY += 20;
+	sliderTypePos = createSlider(0, posterH, 0);
+	sliderTypePos.position(20, posY);
+	sliderTypePosLabel = createDiv('position');
+	sliderTypePosLabel.position(200, posY);
 
-  sliderPos = createSlider(0, 810, 810 / 2);
-  sliderPos.position(20, posY);
+	posY += posYStep * 2;
 
-  posY += 20;
+	/*
+ =========================================
+   slider LineHeight
+   =========================================
+   */
 
-  inp = createInput("");
-  inp.input(myInputEvent);
-  inp.position(20, posY);
+	sliderPhase = createSlider(0, 2000, 100);
+	sliderPhase.position(20, posY);
 
-  posY += 20;
+	posY += posYStep;
 
-  buttonPaletteNext = createButton("Prev", "sss");
-  buttonPaletteNext.position(20, posY);
+	/*
+ =========================================
+   slider LineHeight
+   =========================================
+   */
 
-  buttonPalettePrev = createButton("Next");
-  buttonPalettePrev.position(90, posY);
+	sliderPos = createSlider(0, 810, 810 / 2);
+	sliderPos.position(20, posY);
+
+	posY += posYStep;
+
+	/*
+ =========================================
+   slider LineHeight
+   =========================================
+   */
+
+	sliderMetaPosX = createSlider(0, 586, 586 / 2);
+	sliderMetaPosX.position(20, posY);
+
+	posY += posYStep;
+
+	/*
+ =========================================
+   slider LineHeight
+   =========================================
+   */
+
+	sliderMetaPosY = createSlider(0, 810, 810 / 2);
+	sliderMetaPosY.position(20, posY);
+
+	posY += posYStep;
+
+	/*
+ =========================================
+   slider LineHeight
+   =========================================
+   */
+
+	inp = createInput('');
+	inp.input(myInputEvent);
+	inp.position(20, posY);
+
+	posY += posYStep;
+
+	/*
+ =========================================
+   slider LineHeight
+   =========================================
+   */
+
+	buttonPaletteNext = createButton('Prev', 'sss');
+	buttonPaletteNext.position(20, posY);
+
+	buttonPalettePrev = createButton('Next');
+	buttonPalettePrev.position(90, posY);
 }
 
 function myInputEvent() {
-  console.log("you are typing: ", this.value());
+	console.log('you are typing: ', this.value());
 }
