@@ -13,6 +13,10 @@ document.onkeyup = function(e) {
 		save('out' + imgCounter + '.jpg');
 		imgCounter += 1;
 	}
+
+	if (e.keyCode == 27) {
+		document.getElementById('overlay').classList.remove('visible');
+	}
 };
 
 /*

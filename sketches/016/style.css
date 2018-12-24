@@ -369,3 +369,71 @@ input[type='range']:focus::-ms-fill-upper {
 #overlay {
 	top: 100vh;
 }
+
+.colorsWrapper {
+	display: flex;
+	width: 100%;
+}
+
+.colorsWrapper h4 {
+	margin: 0;
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.colorsWrapper .color-type,
+.colorsWrapper .color-image,
+.colorsWrapper .color-background {
+	border: 1px solid #2815b2;
+	font-weight: normal;
+	padding: 30px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	flex-basis: 1;
+	flex-grow: 1;
+	cursor: pointer;
+}
+
+.colorsWrapper .color-type.active,
+.colorsWrapper .color-image.active,
+.colorsWrapper .color-background.active {
+	background: #2815b2;
+}
+.colorsWrapper .color-type.active h4,
+.colorsWrapper .color-image.active h4,
+.colorsWrapper .color-background.active h4 {
+	color: white;
+}
+
+/*
+ =========================================
+ Scrollbar
+ =========================================
+*/
+
+/* width */
+::-webkit-scrollbar {
+	width: 12px;
+
+	background: transparent;
+	/* background: #cccccc;  */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #eeeeee;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	z-index: 10 !important;
+	background: var(--main-color);
+	cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #333333;
+}

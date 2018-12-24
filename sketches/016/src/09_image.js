@@ -86,7 +86,7 @@ function manipulateImage() {
 			var brightn = brightness(thisPixel);
 
 			// calculate the size of the rectangle
-			var size = map(brightn, 100, 0, 1, State.maxSize);
+			var size = map(brightn, 100, 0, 0, State.maxSize);
 
 			manipulatedImage.push();
 			manipulatedImage.translate(x, y);

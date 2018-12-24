@@ -228,23 +228,33 @@ function buildUI() {
 			${buildImageSelectButton()}
 			${buildUISlider('imgW', 'width', 0, 1400, 1, State.width)}
 			${buildUISlider('gridCols', 'tiles', 20, 200, 1, State.gridCols)}
-			${buildUISlider('imgMaxS', 'tilesize', 0, 12, 0.01, State.maxSize)}
+			${buildUISlider('imgMaxS', 'tilesize', 0.1, 12, 0.01, State.maxSize)}
 			
 		</div>
 
 
 		<div class="gui-group">
-		<h2>Colors</h2>
-		
+			<h2>Colors</h2>
+				<div class="colorsWrapper">
+				<div class="color-type active">
+					<h4>TYPE</h4>
+				</div>
+				<div class="color-image active">
+					<h4>IMAGE</h4>
+				</div>
+				<div class="color-background">
+					<h4>BACK</h4>
+				</div>
+			</div>
 		</div>
 		<div class="gui-group">
-		<h2>Export	</h2>
-		<button>Download</button>
-		<button>submit</button>
+			<h2>Export	</h2>
+			<button>Download</button>
+			<button>submit</button>
 		</div>
 		<div class="gui-group">
-		<h2>Get inspired	</h2>
-		<button>Visit the gallery</button>
+			<h2>Get inspired	</h2>
+			<button>Visit the gallery</button>
 
 		</div>
 	</div>
