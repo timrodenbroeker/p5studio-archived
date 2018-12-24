@@ -48,31 +48,35 @@ function buildUI() {
    */
 
 	gui.addFolder('Image');
-	var imageController = gui.add(sketch, 'image', allImages);
+	var imageController = gui.add(sketch, 'image', imageFilenames);
 
 	imageController.onChange(function(value) {
-		newImage = value;
+		getNewSourceImage(value);
 	});
 
-	var gridImageScalarController = gui.add(sketch, 'imageScalar', 0.1, 7, 0.01);
+	var gridImageScalarController = gui.add(sketch, 'imageScalar', 0.5, 7, 0.01);
 	// gui.add(sketch, 'imageX', -posterW, posterW, 1);
 	// gui.add(sketch, 'imageY', -posterH, posterH, 1);
-	var gridMaxSizeController = gui.add(sketch, 'maxSize', 0, 20, 1);
-	var gridColController = gui.add(sketch, 'gridCols', 2, 200, 1);
+	var gridMaxSizeController = gui.add(sketch, 'maxSize', 0, 20, 0.1);
+	var gridColController = gui.add(sketch, 'gridCols', 2, 180, 1);
 
-	gridMaxSizeController.onChange(function(value) {
-		convertImage();
+	gridMaxSizeController.onChange(function(value) {});
+
+	gridMaxSizeController.onFinishChange(function(value) {
+		manipulateImage();
 	});
 
-	gridImageScalarController.onChange(function(value) {
-		convertImage();
+	gridImageScalarController.onChange(function(value) {});
+
+	gridColController.onChange(function(value) {});
+
+	gridColController.onFinishChange(function(value) {
+		manipulateImage();
 	});
 
-	gridColController.onChange(function(value) {
-		convertImage();
+	gridImageScalarController.onFinishChange(function(value) {
+		manipulateImage();
 	});
-
-	gridColController.onFinishChange(function(value) {});
 
 	/*
  =========================================

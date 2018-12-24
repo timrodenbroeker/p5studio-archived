@@ -1,0 +1,311 @@
+/*
+ =========================================
+ SETUP
+   =========================================
+   */
+
+function setup() {
+	imageMode(CENTER);
+	rectMode(CENTER);
+
+	// Create canvas
+	var canvas = createCanvas(900, 900);
+	canvas.parent('sketch');
+
+	// The poster is a PGraphics-element
+	poster = createGraphics(586, 810);
+
+	manipulateImage();
+	busy = false;
+
+	// gui.js
+	buildUI();
+
+	// dust.js
+	generateDust();
+}
+
+// Function to assign all values from the file-arrays to the gui-select-elements
+// function to(name, seedGroup, seed, number) {
+// 	this.name = name;
+// 	this.seedGroup = seedGroup;
+// 	this.seed = seed;
+// 	}
+
+// 	var countries = [
+// 	  new to("Austria", 3, 0),
+// 	  new to("Belgium", 1, 1),
+// 	  new to("Bosnia & Herzogovinia", 2, 2)
+// 	];
+
+// 	var options = '';
+// 	for (var i = 0; i < countries.length; i++) {
+// 	   options += '<option value="'+JSON.stringify(countries[i])+'">'+countries[i].name+'</option>';
+// 	}
+
+// 	$('select').html(options);
+
+function buildUI() {
+	//////////////
+	// CREATE TEMPLATE WITH FONT-OPTIONS
+	//////////////
+
+	var arrayOfFonts = [];
+
+	for (var property in fontFilenames) {
+		if (fontFilenames.hasOwnProperty(property)) {
+			arrayOfFonts.push(`<option>${property}</option>`);
+		}
+	}
+	var fontOptionsHtml = arrayOfFonts.join('');
+
+	//////////////
+	// CREATE TEMPLATE WITH IMAGE-OPTIONS
+	//////////////
+	var arrayOfImages = [];
+
+	for (var property in imageFilenames) {
+		if (imageFilenames.hasOwnProperty(property)) {
+			arrayOfImages.push(`<option>${property}</option>`);
+		}
+	}
+	var imageOptionsHtml = arrayOfImages.join('');
+
+	//////////////
+	// UI DESIGN
+	//////////////
+
+	/*
+ =========================================
+   Build Slider
+   =========================================
+   */
+
+	function buildUISlider(id, label, min, max, step) {
+		var tmplt = `
+		<div class="gui-wrapper" id="${id}">
+			<div class="gui-label">${label}</div>
+			<div class="gui-slider">
+				<input min="${min}" max="${max}" step="${step}" type="range"/>
+			</div>
+			<div class="gui-val"></div>
+		</div>
+		`;
+
+		return tmplt;
+	}
+
+	/*
+ =========================================
+   Build textfield
+   =========================================
+   */
+
+	function buildTextInput(id, label, val) {
+		var tmplt = `
+	<div class="gui-wrapper" id="${id}">
+		<div class="gui-label">${label}</div>
+		<div class="gui-text">
+			<input value="${val}"/>
+		</div>
+		<div class="gui-val"></div>
+	</div>
+	`;
+
+		return tmplt;
+	}
+
+	/*
+ =========================================
+  Build Select
+   =========================================
+   */
+
+	function buildSelect(id, label, data) {
+		var tmplt = `
+		<div class="gui-wrapper" id="${id}">
+			<div "class="gui-label">${label}</div>
+			<div class="gui-select">
+
+				<select>
+
+					${data}
+
+				</select>
+
+			</div>
+			<div class="gui-val"></div>
+		</div>
+		`;
+
+		return tmplt;
+	}
+
+	/*
+	=========================================
+	Build Radio
+	=========================================
+	*/
+
+	function buildLayerRadio() {
+		var tmplt = `
+			<div class="gui-wrapper" id="layerRadio">
+				<div class="gui-radio">
+					<fieldset>
+						<input type="radio" id="mc" name="Layer" value="Image" checked>
+						<label for="mc"> Image</label> 
+						<input type="radio" id="vi" name="Layer" value="Typography">
+						<label for="vi"> Typography</label>
+					</fieldset>
+				</div>
+			</div>
+		`;
+
+		return tmplt;
+	}
+
+	function buildImageSelectButton() {
+		var tmplt = `
+			<div class="gui-wrapper" id="imageSelectButton">
+				<div class="gui-button">
+					<button onclick="openModal()">Select image</button>
+				</div>
+			</div>
+		`;
+
+		return tmplt;
+	}
+
+	/*
+ =========================================
+  INPUT MARKUP
+   =========================================
+   */
+
+	var markup = `
+	<div id="gui">
+		<div class="gui-group">
+			<h2>Typography</h2>
+			${buildTextInput('text', 'text', 'ART IN THE AGE OF AUTOMATION')}
+			${buildSelect('fonts', 'fonts', fontOptionsHtml)}
+			${buildUISlider('fontsize', 'font-Size', 0, 300, 1)}
+			${buildUISlider('lineheight', 'line-height', 0, 2, 0.001)}
+			${buildUISlider('textPosition', 'text-position', -100, 900, 1)}
+		</div>
+
+		<div class="gui-group">
+		<h2>Image</h2>
+			${buildImageSelectButton()}
+			${buildSelect('images', 'images', imageOptionsHtml)}
+			${buildUISlider('imgW', 'image-width', 0, 1000, 1)}
+			${buildUISlider('imgMaxS', 'tile-size', 0, 12, 0.01)}
+			${buildUISlider('gridCols', 'grid-tiles', 20, 200, 1)}
+		</div>
+	</div>
+	`;
+
+	$('#guiWrapper').html(markup);
+
+	/*
+ =========================================
+ IMAGES OVERLAY
+   =========================================
+   */
+
+	var arrayOfImages = [];
+
+	for (var property in imageFilenames) {
+		if (imageFilenames.hasOwnProperty(property)) {
+			arrayOfImages.push(`
+				<button><img src="../../images/${property}"></button>
+			`);
+		}
+	}
+	var imageOptionsHtml = arrayOfImages.join('');
+
+	$('#overlay').html(imageOptionsHtml);
+
+	/*
+ =========================================
+  LAYER SELECTOR
+   =========================================
+   */
+
+	// Layer
+	// document.getElementById('layerRadio').querySelector('fieldset').onchange = function() {
+	// 	State.selectedLayer = document.querySelector('input[name="Layer"]:checked').value;
+	// };
+
+	/*
+ =========================================
+  TYPOGRAPHY
+   =========================================
+   */
+
+	// Font-size
+	document.getElementById('text').querySelector('input').oninput = function() {
+		State.text = this.value;
+	};
+
+	// Font
+	document.getElementById('fonts').querySelector('select').onchange = function() {
+		var newFont = this.options[this.selectedIndex].value;
+		font = loadFont('../../fonts/' + newFont);
+		console.log(newFont);
+	};
+
+	// Font-size
+	document.getElementById('fontsize').querySelector('input').oninput = function() {
+		State.fontSize = parseFloat(this.value);
+		document.getElementById('fontsize').querySelector('.gui-val').innerHTML = State.fontSize;
+	};
+
+	// line-height
+	document.getElementById('lineheight').querySelector('input').oninput = function() {
+		State.lineHeight = parseFloat(this.value);
+		document.getElementById('lineheight').querySelector('.gui-val').innerHTML = State.lineHeight;
+	};
+
+	// line-height
+	document.getElementById('textPosition').querySelector('input').oninput = function() {
+		State.textPosition = parseFloat(this.value);
+		document.getElementById('textPosition').querySelector('.gui-val').innerHTML = State.textPosition;
+	};
+
+	/*
+ =========================================
+  IMAGES
+   =========================================
+   */
+
+	document.getElementById('images').querySelector('select').onchange = function() {
+		var newImage = this.options[this.selectedIndex].value;
+		getNewSourceImage(newImage);
+		console.log(newImage);
+	};
+
+	// Image width
+	document.getElementById('imgW').querySelector('input').onchange = function() {
+		State.width = parseInt(this.value);
+		document.getElementById('imgW').querySelector('.gui-val').innerHTML = State.width;
+		manipulateImage();
+	};
+
+	document.getElementById('imgMaxS').querySelector('input').onchange = function() {
+		State.maxSize = parseFloat(this.value);
+		document.getElementById('imgMaxS').querySelector('.gui-val').innerHTML = State.maxSize;
+		manipulateImage();
+	};
+
+	document.getElementById('gridCols').querySelector('input').onchange = function() {
+		State.gridCols = parseFloat(this.value);
+		document.getElementById('gridCols').querySelector('.gui-val').innerHTML = State.gridCols;
+		manipulateImage();
+	};
+}
+
+/*
+ =========================================
+  TYPOGRAPHY
+   =========================================
+   */

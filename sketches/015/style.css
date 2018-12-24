@@ -1,0 +1,147 @@
+:root {
+	--main-color: #2103a8;
+}
+
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	width: 100%;
+	height: 100vh;
+	background: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	background: black;
+}
+
+#sketch {
+	width: calc(100vw - 400px);
+	position: fixed;
+	top: 0;
+	left: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+canvas {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	cursor: -webkit-grab;
+}
+#gui {
+	position: fixed;
+	z-index: 10000;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 400px;
+	background: white;
+}
+
+#p5_loading {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	background: black;
+	color: white;
+	font-size: 100px;
+	z-index: 99999999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+select {
+	cursor: pointer;
+}
+
+.gui-box {
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid black;
+}
+
+.gui-slider-element,
+.gui-select-element {
+	display: flex;
+	padding: 6px 0;
+	justify-content: space-between;
+}
+
+.gui-slider-element *,
+.gui-select-element * {
+}
+
+.gui-val {
+	padding-left: 15px;
+}
+
+#overlay {
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: white;
+	z-index: 999999;
+	display: none;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+fieldset {
+	border: 0;
+	outline: 0;
+}
+
+#overlay * {
+	width: 100px;
+	padding: 15px;
+	background: 0;
+	outline: 0;
+	box-shadow: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.gui-wrapper {
+}
+
+.gui-group {
+	padding: 15px;
+}
+
+.gui-group input,
+.gui-group select {
+	width: 100%;
+}
+
+.gui-wrapper {
+	margin: 10px 0;
+	width: 100%;
+	display: flex;
+}
+
+.gui-wrapper * {
+	flex-grow: 1;
+	flex-basis: 0;
+	/* ... */
+}

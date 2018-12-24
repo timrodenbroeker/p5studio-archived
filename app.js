@@ -4,35 +4,80 @@
    =========================================
    */
 
-const testFolder = './images/';
+const imagesFolder = './images/';
+const fontsFolder = './fonts/';
+
 const fs = require('fs');
 
-let arr = [];
-let myJsonString;
+let imagesObj = {};
+let imagesTemp;
+
+let fontsObj = {};
+let fontsTemp;
 
 /*
  =========================================
- Read Directory
+ IMAGES
    =========================================
    */
 
-fs.readdir(testFolder, (err, files) => {
+fs.readdir(imagesFolder, (err, files) => {
 	files.forEach(file => {
-		arr.push(file);
+		// CLEAN UP THE DATA!
+
+		if (file !== '.DS_Store') {
+			// let fileWithoutExtension = file.substring(0, file.indexOf('.'));
+			let fileWithoutExtension = file;
+			imagesObj[fileWithoutExtension] = file;
+		}
 	});
-	myJsonString = JSON.stringify(arr);
-	console.log(myJsonString);
+	imagesTemp = JSON.stringify(imagesObj);
+	console.log(imagesTemp);
 	const dir = 'data';
 
 	if (!fs.existsSync(dir)) {
 		fs.mkdirSync(dir);
 	}
 
-	fs.writeFile('data/images.json', myJsonString, function(err) {
+	fs.writeFile('data/images.json', imagesTemp, function(err) {
 		if (err) {
 			return console.log(err);
 		}
 
-		console.log('The file was saved!');
+		console.log('ImageList saved!');
+	});
+});
+
+/*
+ =========================================
+ fontS
+   =========================================
+   */
+
+fs.readdir(fontsFolder, (err, files) => {
+	files.forEach(file => {
+		// CLEAN UP THE DATA!
+
+		if (file !== '.DS_Store') {
+			// let fileWithoutExtension = file.substring(0, file.indexOf('.'));
+			let fileWithoutExtension = file;
+
+			fontsObj[fileWithoutExtension] = file;
+		}
+	});
+	fontsTemp = JSON.stringify(fontsObj);
+	console.log(fontsTemp);
+	const dir = 'data';
+
+	if (!fs.existsSync(dir)) {
+		fs.mkdirSync(dir);
+	}
+
+	fs.writeFile('data/fonts.json', fontsTemp, function(err) {
+		if (err) {
+			return console.log(err);
+		}
+
+		console.log('fontList saved!');
 	});
 });

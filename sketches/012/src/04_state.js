@@ -23,12 +23,12 @@ var State = {
 	metaInfosY: 742,
 
 	// IMAGE
-	image: '43.jpg',
+	image: '9.jpg',
 	imageX: 10,
 	imageY: 10,
-	imageScalar: 4,
-	gridCols: 100,
-	maxSize: 10,
+	imageScalar: 2,
+	gridCols: 180,
+	maxSize: 4,
 
 	// Colors
 	Colors: {
