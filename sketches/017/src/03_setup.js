@@ -222,11 +222,10 @@ function buildUI() {
 
   function buildExportTool() {
     var tmplt = `	
-    <div class="gui-group">
-      <h2>Export	</h2>
+   
       <button>Download</button>
       <button>submit</button>
-    </div>`;
+   `;
     return tmplt;
   }
 
@@ -261,12 +260,14 @@ function buildUI() {
 			${buildImageSelectButton()}
 			${buildUISlider("imgW", "width", 0, 1400, 1, State.width)}
 			${buildUISlider("gridCols", "tiles", 20, 200, 1, State.gridCols)}
-			${buildUISlider("imgMaxS", "tilesize", 0.1, 12, 0.01, State.maxSize)}
+      ${buildUISlider("imgMaxS", "tilesize", 0.1, 12, 0.01, State.maxSize)}
+
 		</div>
 
-
-		
-	
+    <div class="gui-group">
+		  <h2>Image</h2>
+		  ${buildExportTool()}
+    </div>
 		<div class="gui-group">
 			<h2>Get inspired	</h2>
 			<button>Visit the gallery</button>
@@ -429,30 +430,30 @@ function buildUI() {
     manipulateImage();
   };
 
-  document.getElementById("color-type").onclick = function() {
-    this.classList.toggle("active");
-    if (this.classList.contains("active")) {
-      State.Colors.text = "#2103A8";
-    } else {
-      State.Colors.text = "#f1f1f1";
-    }
-  };
+  // document.getElementById("color-type").onclick = function() {
+  //   this.classList.toggle("active");
+  //   if (this.classList.contains("active")) {
+  //     State.Colors.text = "#2103A8";
+  //   } else {
+  //     State.Colors.text = "#f1f1f1";
+  //   }
+  // };
 
-  document.getElementById("color-background").onclick = function() {
-    this.classList.toggle("active");
-    if (this.classList.contains("active")) {
-      State.Colors.background = "#2103A8";
-    } else {
-      State.Colors.background = "#f1f1f1";
-    }
-  };
-  document.getElementById("color-image").onclick = function() {
-    this.classList.toggle("active");
-    if (this.classList.contains("active")) {
-      State.Colors.image = "#2103A8";
-    } else {
-      State.Colors.image = "#f1f1f1";
-    }
-    manipulateImage();
-  };
+  // document.getElementById("color-background").onclick = function() {
+  //   this.classList.toggle("active");
+  //   if (this.classList.contains("active")) {
+  //     State.Colors.background = "#2103A8";
+  //   } else {
+  //     State.Colors.background = "#f1f1f1";
+  //   }
+  // };
+  // document.getElementById("color-image").onclick = function() {
+  //   this.classList.toggle("active");
+  //   if (this.classList.contains("active")) {
+  //     State.Colors.image = "#2103A8";
+  //   } else {
+  //     State.Colors.image = "#f1f1f1";
+  //   }
+  //   manipulateImage();
+  // };
 }
