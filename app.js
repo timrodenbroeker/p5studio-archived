@@ -1,3 +1,57 @@
+const fs = require("fs");
+
+// The folder of the current version of the application
+
+const folderName = "021";
+
+const folderPath = "./sketches/" + folderName;
+
+const folderPathJs = folderPath + "/src/";
+
+const foldersToWatch = [
+  folderPathJs + "ui/*.js",
+  folderPathJs + "ui/components/*.js",
+  folderPathJs + "*.js"
+];
+
+/*
+	 =========================================
+	 IMAGES
+	   =========================================
+	   */
+
+var imagesObj = [];
+fs.readdir("images", (err, files) => {
+  files.forEach(file => {
+    // CLEAN UP THE DATA!
+
+    if (file !== ".DS_Store") {
+      // let fileWithoutExtension = file.substring(0, file.indexOf('.'));
+
+      let fileWithoutExtension = file;
+      imagesObj.push(file);
+    }
+  });
+  imagesTemp = JSON.stringify(imagesObj);
+  // console.log("generatesimagesTemp);
+
+  const dir = "data";
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  fs.writeFile("data/images.json", imagesTemp, function(err) {
+    if (err) {
+      return console.log(err);
+    }
+
+    console.log("ImageList saved!");
+  });
+});
+
+console.log("aaaaa");
+
 /* 
 Read the skecthes-folder and generate a JSON-file. 
 The JSON-file will generate the list of skectehs in 

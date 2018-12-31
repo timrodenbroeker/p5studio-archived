@@ -3,3 +3,5 @@ node_modules/
 
 *.woff
 *.woff2
+# *.otf
+# *.ttf

@@ -1,19 +1,8 @@
 // PREPARE THE DATA
-const fs = require("fs");
-fs.readFile("node_scripts/global.js", () => console.log("global.js loaded"));
-fs.readFile("node_scripts/prepareFonts.js", () =>
-  console.log("prepareFonts loaded")
-);
-fs.readFile("node_scripts/prepareImages.js", () =>
-  console.log("prepareImages.js loaded")
-);
-fs.readFile("node_scripts/createHtml.js", () =>
-  console.log("createHtml.js loaded")
-);
 
 // GULP
 // Define the foldername of the sketch to be used
-const folderName = "020";
+const folderName = "021";
 
 const folderPath = "./sketches/" + folderName;
 
@@ -24,6 +13,9 @@ const foldersToWatch = [
   folderPathJs + "ui/components/*.js",
   folderPathJs + "*.js"
 ];
+
+
+function okGulp(){
 
 // Imports
 
@@ -74,3 +66,4 @@ function watchFiles() {
 }
 
 exports.default = gulp.parallel(scripts, serve, watchFiles);
+
