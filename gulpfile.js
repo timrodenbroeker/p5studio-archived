@@ -1,6 +1,15 @@
-// PREPATE THE DATA
+// PREPARE THE DATA
 const fs = require("fs");
-eval(fs.readFileSync("prepareData.js") + "");
+fs.readFile("node_scripts/global.js", () => console.log("global.js loaded"));
+fs.readFile("node_scripts/prepareFonts.js", () =>
+  console.log("prepareFonts loaded")
+);
+fs.readFile("node_scripts/prepareImages.js", () =>
+  console.log("prepareImages.js loaded")
+);
+fs.readFile("node_scripts/createHtml.js", () =>
+  console.log("createHtml.js loaded")
+);
 
 // GULP
 // Define the foldername of the sketch to be used

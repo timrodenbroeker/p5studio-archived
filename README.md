@@ -1,37 +1,13 @@
-# p5js-workspace
+#p5js workspace
 
--   Start a http-server via 'http-server'
+Working with p5.js these days is a bit difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet.
 
-# ressources
+This application aims to support an iterative and creative development-process as good as possible.
 
--   https://www.youtube.com/watch?v=UWgDKtvnjIU
+The p5js-workspace solves numerous problems:
 
-# TO DO
-
--   Schriften automatisiert laden
--   copy function
--   save state in localStorage
--   Automate number of rows
--   initial image not set
--   solution for layer-selection
--   dust not working
-
-# Textideen
-
--   Art in times of automation
--   Blue Poster Inferno
--   The chemistry of good design
--   Form follows Software
--   What You Can Do, or Dream You Can, Begin It; Boldness Has Genius, Power, and Magic in It
--   The medium is the message
--   Don't work hard; Work intelligent!
--   Adobe, you suck!
--   design automation troublemakers
--   “Our Age of Anxiety is, in great part, the result of trying to do today’s jobs with yesterday’s tools!”
-    ― Marshall McLuhan
-    tags: inspirational, motivation 120 likes Like
--   “We become what we behold. We shape our tools, and thereafter our tools shape us.”
--   “First we build the tools, then they build us.”
--   “if it works it's obsolete”
--   “Adds are the cave art of the twentieth century.”
--   “Only the vanquished remember history.”
+- It automatically creates a list of sketch-folders from the sketches-folder
+- It automatically saves all font-filenames in a JSON-file in the fonts-folder, so we are abled to use the fonts later on in our sketches
+- It automatically saves all image-filenames in a JSON-file in the images-folder.
+- It is based on a Gulp-process that uses Babel to transpile the Javascript
+- It automatically compiles all js files from the src-folder and its subfolders to an app.js

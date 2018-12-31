@@ -36,7 +36,7 @@ fs.writeFile("data/sketches.json", folderNamesStringified, function(err) {
 */
 
 const htmlTop = `
-<!DOCTYPE html><html lang="en"><head></head><body>
+<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="./style.css" /></head><body>
   <ul>
 `;
 let htmlDirectoryList = [];
