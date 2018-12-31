@@ -50,8 +50,6 @@ fs.readdir("images", (err, files) => {
   });
 });
 
-console.log("aaaaa");
-
 /* 
 Read the skecthes-folder and generate a JSON-file. 
 The JSON-file will generate the list of skectehs in 
@@ -99,7 +97,7 @@ onlyFolderNames.map(folder =>
   htmlDirectoryList.push(`<li><a href="sketches/${folder}">${folder}</a></li>`)
 );
 
-const htmlDirectoryListPureMarkup = htmlDirectoryList.join("");
+const htmlDirectoryListPureMarkup = htmlDirectoryList.reverse().join("");
 
 const htmlBottom = `
   </ul>

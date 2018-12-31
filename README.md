@@ -11,3 +11,13 @@ The p5js-workspace solves numerous problems:
 - It automatically saves all image-filenames in a JSON-file in the images-folder.
 - It is based on a Gulp-process that uses Babel to transpile the Javascript
 - It automatically compiles all js files from the src-folder and its subfolders to an app.js
+
+## Scripts
+
+```js
+node app.js
+```
+
+```js
+gulp;
+```

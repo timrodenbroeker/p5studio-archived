@@ -14,9 +14,6 @@ const foldersToWatch = [
   folderPathJs + "*.js"
 ];
 
-
-function okGulp(){
-
 // Imports
 
 const gulp = require("gulp");
@@ -65,5 +62,8 @@ function watchFiles() {
   );
 }
 
-exports.default = gulp.parallel(scripts, serve, watchFiles);
+console.log(
+  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+);
 
+exports.default = gulp.parallel(scripts, serve, watchFiles);
