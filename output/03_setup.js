@@ -1,1 +1,0 @@
-function setup(){imageMode(CENTER),rectMode(CENTER),createCanvas(900,900).parent("sketch"),poster=createGraphics(586,810),manipulateImage(),busy=!1,buildUI(),generateDust()}

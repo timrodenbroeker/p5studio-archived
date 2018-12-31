@@ -1,1 +1,0 @@
-var sourceImage,manipulatedImage,font,metaFont,imageFilenames={},fontFilenames={},busy=!0;function preload(){imageFilenames=loadJSON("../../data/images.json"),fontFilenames=loadJSON("../../data/fonts.json"),sourceImage=loadImage("../../images/30.jpg"),font=loadFont("../../fonts/Cormorant-Regular.ttf"),metaFont=loadFont("../../fonts/Poppins-Bold.ttf")}

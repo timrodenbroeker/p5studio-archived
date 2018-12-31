@@ -28,6 +28,7 @@ const browserSync = require("browser-sync").create();
 // Tasks
 
 function reload(done) {
+  console.log("reload!");
   browserSync.reload();
 }
 
@@ -54,7 +55,13 @@ function scripts() {
 
 // Watch files
 function watchFiles() {
-  gulp.watch(foldersToWatch, gulp.parallel(scripts, reload));
+  gulp.watch(
+    foldersToWatch,
+    gulp.series(scripts, function(done) {
+      browserSync.reload();
+      done();
+    })
+  );
 }
 
-exports.default = gulp.series(scripts, serve, watchFiles);
+exports.default = gulp.parallel(scripts, serve, watchFiles);

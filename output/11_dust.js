@@ -1,1 +1,0 @@
-var rects=[];function generateDust(){for(var r=0;r<100;r++)rects.push({x:random(posterW),y:random(posterH),w:random(2),h:random(5)})}function dust(){poster.fill(State.Colors.background),poster.noStroke();for(var r=0;r<rects.length;r++)poster.rect(rects[r].x,rects[r].y,rects[r].w,rects[r].h)}
