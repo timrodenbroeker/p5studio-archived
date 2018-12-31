@@ -1,0 +1,1 @@
+var State={selectedLayer:"I",text:"ART IN THE AGE OF AUTOMATION",fontSize:200,lineHeight:.9,textX:0,textY:-20,font:"Cormorant-Italic.ttf",metaInfosX:10,metaInfosY:742,image:"9.jpg",imageX:10,imageY:10,width:700,gridCols:150,maxSize:4,Colors:{background:"#ffffff",text:"#f45642",image:"#2103A8"}};

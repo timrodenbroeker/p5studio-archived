@@ -1,6 +1,6 @@
 /*
  =========================================
- Branding
+ Typography
    =========================================
    */
 
@@ -11,7 +11,7 @@ function type() {
   poster.rectMode(CORNER);
   poster.textSize(State.fontSize);
 
-  poster.fill(State.Colors.text);
+  poster.fill(249, 48, 17, 240);
   poster.push();
   poster.translate(State.textX, State.textY);
 
@@ -39,14 +39,14 @@ function type() {
 
 function metaInfos() {
   poster.textFont(metaFont);
-  poster.textAlign(LEFT, TOP);
-  poster.fill(State.Colors.text);
-  poster.textSize(15);
+  poster.textAlign(CENTER, TOP);
+  poster.fill(State.Colors.image);
+  poster.textSize(11);
   poster.push();
   poster.translate(State.metaInfosX, State.metaInfosY);
 
   // poster.text('Programming Posters', 0, 0);
   // poster.text('April 17th - 21th 2019', 0, 0 + 16);
-  poster.text("www.timrodenbroeker.de", 0, 0 + 32);
+  poster.text("www.timrodenbroeker.de", posterW / 2, 0 + 32);
   poster.pop();
 }

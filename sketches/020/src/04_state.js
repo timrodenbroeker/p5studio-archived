@@ -10,7 +10,6 @@
 
 var State = {
   // DATA
-
   selectedLayer: "I",
   text: "ART IN THE AGE OF AUTOMATION",
 
@@ -35,8 +34,8 @@ var State = {
 
   // Colors
   Colors: {
-    background: "#f1f1f1",
-    text: "#2103A8",
+    background: "#ffffff",
+    text: "#f45642",
     image: "#2103A8"
   }
 };
