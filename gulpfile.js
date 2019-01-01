@@ -2,7 +2,7 @@
 
 // GULP
 // Define the foldername of the sketch to be used
-const folderName = "021";
+const folderName = "022-add-colors";
 
 const folderPath = "./sketches/" + folderName;
 
@@ -44,8 +44,8 @@ function scripts() {
     .pipe(concat("app.js"))
     .pipe(
       babel({
-        presets: ["minify"],
-        comments: false
+        // presets: ["minify"],
+        // comments: false
       })
     )
     .pipe(gulp.dest(folderPath));
@@ -62,8 +62,6 @@ function watchFiles() {
   );
 }
 
-console.log(
-  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-);
-
 exports.default = gulp.parallel(scripts, serve, watchFiles);
+
+function build() {}

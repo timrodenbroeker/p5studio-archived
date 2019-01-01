@@ -2,7 +2,7 @@ const fs = require("fs");
 
 // The folder of the current version of the application
 
-const folderName = "021";
+const folderName = "022-add-colors";
 
 const folderPath = "./sketches/" + folderName;
 
@@ -34,6 +34,8 @@ fs.readdir("images", (err, files) => {
   });
   imagesTemp = JSON.stringify(imagesObj);
   // console.log("generatesimagesTemp);
+
+  console.log(imagesTemp);
 
   const dir = "data";
 

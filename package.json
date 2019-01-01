@@ -23,7 +23,9 @@
 		"babel-register": "^6.26.0",
 		"file-system": "^2.2.2",
 		"gulp-babel": "^8.0.0",
-		"gulp-watch": "^5.0.1"
+		"gulp-watch": "^5.0.1",
+		"ncp": "^2.0.0",
+		"replace-in-file": "^3.4.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.2",
