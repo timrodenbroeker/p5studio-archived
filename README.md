@@ -2,9 +2,9 @@
 
 ## Manifesto
 
-Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet. The transition between beginners-work and a more advanced setup is too difficult. This application aims to change that.
+Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet. The transition between beginners-work and a more advanced setup is too hard. This application aims to change that.
 
-It supports an iterative and creative development-process with p5.js as good as possible. It solves numerous problems:
+It supports an iterative and creative development-process with p5.js and any other library as good as possible. It solves numerous problems:
 
 - It automatically creates a list of sketch-folders from the sketches-folder and puts them togehther as a list in index.html
 - It automatically saves all font-filenames in a JSON-file in the fonts-folder, so you are abled to use the fonts later on in our sketches
@@ -26,7 +26,7 @@ If you want to deploy one of your sketches as a standalone app you can do so by 
 node build.js
 ```
 
-If you want to work on any sketch inside the sketches-folder, run the `gulp`. It will bundle your Javascript-files from the src-folder and start browsersync and a watch-task.
+If you want to work on any sketch inside the sketches-folder, run `gulp` from the command-line. It will bundle your Javascript-files from the src-folder, start browsersync and a watch-task.
 
 ```js
 gulp;

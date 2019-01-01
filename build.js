@@ -1,4 +1,7 @@
-// Build Process
+/**
+ * This is the place where the build process lives
+ * It
+ */
 
 // Now: Copy an paste everything to the build-folder to keep everything synched
 

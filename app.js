@@ -1,18 +1,8 @@
 const fs = require("fs");
+const chalk = require("chalk");
+var inquirer = require("inquirer");
 
 // The folder of the current version of the application
-
-const folderName = "022-add-colors";
-
-const folderPath = "./sketches/" + folderName;
-
-const folderPathJs = folderPath + "/src/";
-
-const foldersToWatch = [
-  folderPathJs + "ui/*.js",
-  folderPathJs + "ui/components/*.js",
-  folderPathJs + "*.js"
-];
 
 /*
 	 =========================================
@@ -34,8 +24,6 @@ fs.readdir("images", (err, files) => {
   });
   imagesTemp = JSON.stringify(imagesObj);
   // console.log("generatesimagesTemp);
-
-  console.log(imagesTemp);
 
   const dir = "data";
 
@@ -71,49 +59,82 @@ const getDirectories = source =>
 
 const directories = getDirectories(source);
 
-const onlyFolderNames = directories.map(foldername =>
-  foldername.replace(source + "/", "")
-);
+/**
+ * Ask for the sketchfolder
+ **/
 
-const folderNamesStringified = JSON.stringify(onlyFolderNames);
+let folderName;
 
-fs.writeFile("data/sketches.json", folderNamesStringified, function(err) {
-  if (err) {
-    return console.log(err);
-  }
+inquirer
+  .prompt([
+    {
+      type: "list",
+      name: "sketchfolder",
+      message: "Which sketchfolder is the one you wanna use?",
+      choices: directories
+    }
+  ])
+  .then(answers => {
+    foldername = answers.skecthfolder;
 
-  console.log("SketchList saved!");
-});
+    /**
+     * END Ask for the skecthfolder
+     **/
 
-/* 
-  Now create the index.html-file with the sketches as an HTML-table
+    const onlyFolderNames = directories.map(foldername =>
+      foldername.replace(source + "/", "")
+    );
+
+    const folderPath = "./sketches/" + folderName;
+
+    const folderPathJs = folderPath + "/src/";
+
+    const foldersToWatch = [
+      folderPathJs + "ui/*.js",
+      folderPathJs + "ui/components/*.js",
+      folderPathJs + "*.js"
+    ];
+
+    const folderNamesStringified = JSON.stringify(onlyFolderNames);
+
+    fs.writeFile("data/sketches.json", folderNamesStringified, function(err) {
+      if (err) {
+        return console.log(err);
+      }
+
+      console.log("SketchList saved!");
+    });
+
+    /* 
+  Now create the index.html-file with the sketches as an HTML-list
 */
 
-const htmlTop = `
+    const htmlTop = `
 <!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="./style.css" /></head><body>
   <ul>
 `;
-let htmlDirectoryList = [];
+    let htmlDirectoryList = [];
 
-onlyFolderNames.map(folder =>
-  htmlDirectoryList.push(`<li><a href="sketches/${folder}">${folder}</a></li>`)
-);
+    onlyFolderNames.map(folder =>
+      htmlDirectoryList.push(
+        `<li><a href="sketches/${folder}">${folder}</a></li>`
+      )
+    );
 
-const htmlDirectoryListPureMarkup = htmlDirectoryList.reverse().join("");
+    const htmlDirectoryListPureMarkup = htmlDirectoryList.reverse().join("");
 
-const htmlBottom = `
+    const htmlBottom = `
   </ul>
 </body></html>
 `;
 
-const markup = htmlTop + htmlDirectoryListPureMarkup + htmlBottom;
+    const markup = htmlTop + htmlDirectoryListPureMarkup + htmlBottom;
 
-// console.log(markup);
+    fs.writeFile("index.html", markup, function(err) {
+      if (err) {
+        return console.log(err);
+      }
 
-fs.writeFile("index.html", markup, function(err) {
-  if (err) {
-    return console.log(err);
-  }
-
-  console.log("index.html saved!");
-});
+      console.log("index.html saved!");
+    });
+  });
