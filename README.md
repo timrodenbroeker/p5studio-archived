@@ -1,4 +1,6 @@
-#p5js workspace
+# p5js workspace
+
+## Manifesto
 
 Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet.
 
@@ -26,7 +28,7 @@ If you want to deploy one of your sketches as a standalone app you can do so by 
 node build.js
 ```
 
-If you want to work on any sketch inside the sketches-folder, run the gulp-script. It will bundle your Javascript-files from the src-folder and start browsersync and a watch-task.
+If you want to work on any sketch inside the sketches-folder, run the `gulp`. It will bundle your Javascript-files from the src-folder and start browsersync and a watch-task.
 
 ```js
 gulp;
