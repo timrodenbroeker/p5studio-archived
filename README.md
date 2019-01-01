@@ -2,11 +2,9 @@
 
 ## Manifesto
 
-Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet.
+Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet. The transition between beginners-work and a more advanced setup is too difficult. This application aims to change that.
 
-This application aims to support an iterative and creative development-process as good as possible.
-
-The p5js-workspace solves numerous problems:
+It supports an iterative and creative development-process with p5.js as good as possible. It solves numerous problems:
 
 - It automatically creates a list of sketch-folders from the sketches-folder and puts them togehther as a list in index.html
 - It automatically saves all font-filenames in a JSON-file in the fonts-folder, so you are abled to use the fonts later on in our sketches
