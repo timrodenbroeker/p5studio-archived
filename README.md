@@ -1,6 +1,6 @@
 # p5 paperclip
 
-[logo]: logo.png 'Logo Title Text 2'
+![Logo](logo.png)
 
 Working with p5.js these days is still a bit difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet.
 
