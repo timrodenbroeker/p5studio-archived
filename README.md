@@ -6,8 +6,8 @@ Working with p5.js these days is difficult. Even though there's a pretty nice we
 
 It supports an iterative and creative development-process with p5.js and any other library as good as possible. It solves numerous problems:
 
-- It automatically creates a list of sketch-folders from the sketches-folder
-- It automatically saves all font-filenames in a JSON-file in the fonts-folder, so we are abled to use the fonts later on in our sketches
+- To support an interative, creative process, it automatically creates a html-file with a overview of all sketch-folders
+- Assets like fonts and images can be saved globally in the data-folder, so all sketches can easily access them. The 'app.js'-script automatically saves all font-filenames in a JSON-file in the fonts-folder, so we are abled to load the fonts asynchronously while running our sketches
 - It automatically saves all image-filenames in a JSON-file in the images-folder.
 - It is based on a Gulp-process that uses Babel to transpile the Javascript
 - It automatically compiles all js files from the src-folder and its subfolders to an app.js
