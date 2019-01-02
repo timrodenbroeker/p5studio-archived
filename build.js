@@ -24,7 +24,7 @@ copypastedir("fonts", "build/fonts");
 copypastedir("libraries", "build/libraries");
 copypastedir("sketches/" + folderName, "build");
 
-// Search and replace
+// Search and replace "../../" to "./"
 
 const replace = require("replace-in-file");
 const options = {

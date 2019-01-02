@@ -1,14 +1,13 @@
 const fs = require("fs");
-const chalk = require("chalk");
-var inquirer = require("inquirer");
+
+let folderName = "023";
 
 // The folder of the current version of the application
 
-/*
-	 =========================================
-	 IMAGES
-	   =========================================
-	   */
+/**
+ * Generate a JSON-file containing an array of all images
+ * stored in the image-folder.
+ */
 
 var imagesObj = [];
 fs.readdir("images", (err, files) => {
@@ -40,11 +39,11 @@ fs.readdir("images", (err, files) => {
   });
 });
 
-/* 
-Read the skecthes-folder and generate a JSON-file. 
-The JSON-file will generate the list of skectehs in 
-index.html
-*/
+/**
+ * Read the sketches-folder and generate a JSON-file.
+ * The JSON-file will generate the list of skectehs in
+ * index.html
+ */
 
 const source = "sketches";
 
@@ -59,82 +58,57 @@ const getDirectories = source =>
 
 const directories = getDirectories(source);
 
-/**
- * Ask for the sketchfolder
- **/
+const onlyFolderNames = directories.map(foldername =>
+  foldername.replace(source + "/", "")
+);
 
-let folderName;
+const folderPath = "./sketches/" + folderName;
 
-inquirer
-  .prompt([
-    {
-      type: "list",
-      name: "sketchfolder",
-      message: "Which sketchfolder is the one you wanna use?",
-      choices: directories
-    }
-  ])
-  .then(answers => {
-    foldername = answers.skecthfolder;
+const folderPathJs = folderPath + "/src/";
 
-    /**
-     * END Ask for the skecthfolder
-     **/
+const foldersToWatch = [
+  folderPathJs + "ui/*.js",
+  folderPathJs + "ui/components/*.js",
+  folderPathJs + "*.js"
+];
 
-    const onlyFolderNames = directories.map(foldername =>
-      foldername.replace(source + "/", "")
-    );
+const folderNamesStringified = JSON.stringify(onlyFolderNames);
 
-    const folderPath = "./sketches/" + folderName;
+fs.writeFile("data/sketches.json", folderNamesStringified, function(err) {
+  if (err) {
+    return console.log(err);
+  }
 
-    const folderPathJs = folderPath + "/src/";
+  console.log("SketchList saved!");
+});
 
-    const foldersToWatch = [
-      folderPathJs + "ui/*.js",
-      folderPathJs + "ui/components/*.js",
-      folderPathJs + "*.js"
-    ];
-
-    const folderNamesStringified = JSON.stringify(onlyFolderNames);
-
-    fs.writeFile("data/sketches.json", folderNamesStringified, function(err) {
-      if (err) {
-        return console.log(err);
-      }
-
-      console.log("SketchList saved!");
-    });
-
-    /* 
+/* 
   Now create the index.html-file with the sketches as an HTML-list
 */
 
-    const htmlTop = `
+const htmlTop = `
 <!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="./style.css" /></head><body>
   <ul>
 `;
-    let htmlDirectoryList = [];
+let htmlDirectoryList = [];
 
-    onlyFolderNames.map(folder =>
-      htmlDirectoryList.push(
-        `<li><a href="sketches/${folder}">${folder}</a></li>`
-      )
-    );
+onlyFolderNames.map(folder =>
+  htmlDirectoryList.push(`<li><a href="sketches/${folder}">${folder}</a></li>`)
+);
 
-    const htmlDirectoryListPureMarkup = htmlDirectoryList.reverse().join("");
+const htmlDirectoryListPureMarkup = htmlDirectoryList.reverse().join("");
 
-    const htmlBottom = `
+const htmlBottom = `
   </ul>
 </body></html>
 `;
 
-    const markup = htmlTop + htmlDirectoryListPureMarkup + htmlBottom;
+const markup = htmlTop + htmlDirectoryListPureMarkup + htmlBottom;
 
-    fs.writeFile("index.html", markup, function(err) {
-      if (err) {
-        return console.log(err);
-      }
+fs.writeFile("index.html", markup, function(err) {
+  if (err) {
+    return console.log(err);
+  }
 
-      console.log("index.html saved!");
-    });
-  });
+  console.log("index.html saved!");
+});

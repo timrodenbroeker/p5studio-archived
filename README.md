@@ -1,6 +1,6 @@
 # p5 paperclip
 
-![Logo](logo.png)
+![branding](branding.jpg)
 
 Working with p5.js these days is still a bit difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet.
 
@@ -8,11 +8,11 @@ Working with p5.js these days is difficult. Even though there's a pretty nice we
 
 It supports an iterative and creative development-process with p5.js and any other library as good as possible. It solves numerous problems:
 
--   It automatically creates a list of sketch-folders from the sketches-folder
--   It automatically saves all font-filenames in a JSON-file in the fonts-folder, so we are abled to use the fonts later on in our sketches
--   It automatically saves all image-filenames in a JSON-file in the images-folder.
--   It is based on a Gulp-process that uses Babel to transpile the Javascript
--   It automatically compiles all js files from the src-folder and its subfolders to an app.js
+- It automatically creates a list of sketch-folders from the sketches-folder
+- It automatically saves all font-filenames in a JSON-file in the fonts-folder, so we are abled to use the fonts later on in our sketches
+- It automatically saves all image-filenames in a JSON-file in the images-folder.
+- It is based on a Gulp-process that uses Babel to transpile the Javascript
+- It automatically compiles all js files from the src-folder and its subfolders to an app.js
 
 ## Scripts
 

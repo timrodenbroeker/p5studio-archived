@@ -2,7 +2,12 @@
 
 // GULP
 // Define the foldername of the sketch to be used
-const folderName = "022-add-colors";
+
+let folderName = "023";
+
+/**
+ * END Ask for the skecthfolder
+ **/
 
 const folderPath = "./sketches/" + folderName;
 
