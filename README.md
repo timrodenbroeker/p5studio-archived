@@ -2,8 +2,6 @@
 
 ![branding](branding.jpg)
 
-Working with p5.js these days is still a bit difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet.
-
 Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet. The transition between beginners-work and a more advanced setup is too hard. This application aims to change that.
 
 It supports an iterative and creative development-process with p5.js and any other library as good as possible. It solves numerous problems:
