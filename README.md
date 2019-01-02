@@ -1,4 +1,4 @@
-# p5 paperclip
+# p5-studio
 
 Working with p5.js these days is still a bit difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet.
 
