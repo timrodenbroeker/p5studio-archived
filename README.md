@@ -1,6 +1,6 @@
 # p5studio
 
-![branding](branding.jpg)
+![branding](docs/branding.jpg)
 
 Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet. The transition between beginners-work and a more advanced setup is too hard. This application aims to change that.
 
