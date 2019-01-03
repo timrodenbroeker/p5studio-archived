@@ -5,6 +5,7 @@
  */
 
 const fs = require("fs");
+const chalk = require("chalk");
 
 module.exports = {
   sketchesToJSON: function() {
@@ -41,43 +42,14 @@ module.exports = {
       err
     ) {
       if (err) {
-        return console.log(err);
+        return console.log(chalk.red(err));
       }
 
-      console.log("SketchList saved!");
+      console.log(chalk.green("SketchList saved!"));
     });
 
     /* 
   Now create the index.html-file with the sketches as an HTML-list
 */
-
-    const htmlTop = `
-<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="./style.css" /></head><body>
-  <ul>
-`;
-    let htmlDirectoryList = [];
-
-    onlyFolderNames.map(folder =>
-      htmlDirectoryList.push(
-        `<li><a href="sketches/${folder}">${folder}</a></li>`
-      )
-    );
-
-    const htmlDirectoryListPureMarkup = htmlDirectoryList.reverse().join("");
-
-    const htmlBottom = `
-  </ul>
-</body></html>
-`;
-
-    const markup = htmlTop + htmlDirectoryListPureMarkup + htmlBottom;
-
-    fs.writeFile("index.html", markup, function(err) {
-      if (err) {
-        return console.log(err);
-      }
-
-      console.log("index.html saved!");
-    });
   }
 };

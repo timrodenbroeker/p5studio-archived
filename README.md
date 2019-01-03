@@ -2,11 +2,13 @@
 
 ![branding](docs/branding.jpg)
 
+## Why the heck are you building this?
+
 Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet. The transition between beginners-work and a more advanced setup is too hard. This application aims to change that.
 
 It supports an iterative and creative development-process with p5.js and any other library as good as possible. It solves numerous problems:
 
-- To support an interative, creative process, it automatically creates a html-file with a overview of all sketch-folders
+- It automatically creates a html-file with a overview of all sketch-folders
 - Assets like fonts and images can be saved globally in the data-folder, so all sketches can easily access them. The 'app.js'-script automatically saves all font-filenames in a JSON-file in the fonts-folder, so we are abled to load the fonts asynchronously while running our sketches
 - It automatically saves all image-filenames in a JSON-file in the images-folder.
 - It is based on a Gulp-process that uses Babel to transpile the Javascript

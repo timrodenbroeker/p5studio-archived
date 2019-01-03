@@ -4,6 +4,7 @@
  */
 
 const fs = require("fs");
+const chalk = require("chalk");
 
 module.exports = {
   imagesToJSON: function() {
@@ -25,7 +26,7 @@ module.exports = {
         if (err) {
           return console.log(err);
         }
-        console.log("ImageList saved!");
+        console.log(chalk.green("ImageList saved!"));
       });
     });
   }

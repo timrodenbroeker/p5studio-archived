@@ -3,6 +3,7 @@
  */
 
 const fs = require("fs");
+const chalk = require("chalk");
 
 module.exports = {
   fontsToJSON: function() {
@@ -24,7 +25,7 @@ module.exports = {
         if (err) {
           return console.log(err);
         }
-        console.log("FontList saved!");
+        console.log(chalk.green("FontList saved!"));
       });
     });
   }
