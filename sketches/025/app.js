@@ -213,27 +213,16 @@ function mouseDragImage() {
 
 function type() {
   poster.textFont(font);
-  poster.textAlign(RIGHT, TOP);
+  poster.textAlign(LEFT, TOP);
   poster.rectMode(CORNER);
   poster.textSize(State.fontSize);
+  poster.textLeading(State.lineHeight * State.fontSize);
   poster.fill(State.Colors.text);
   poster.push();
   poster.translate(State.textX, State.textY);
   var charPosX = 0;
   var charPosY = 0;
-
-  for (var i = 0; i < State.text.length; i++) {
-    var charW = poster.textWidth(State.text[i]);
-
-    if (charPosX > posterW - 20) {
-      charPosX = 0;
-      charPosY += State.fontSize * State.lineHeight;
-    }
-
-    charPosX += charW;
-    poster.text(State.text[i], charPosX, charPosY);
-  }
-
+  poster.text(State.text, charPosX, charPosY);
   poster.pop();
 }
 /*
@@ -553,7 +542,7 @@ function databinding() {
 
   document.getElementById("text").querySelector("textarea").oninput = function () {
     // State.text = this.value.toUpperCase();
-    State.text = this.value;
+    State.text = this.value.replace(/\r\n|\r|\n/g, "\n");
     console.log(State.text);
   }; // Font
 

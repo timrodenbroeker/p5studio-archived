@@ -7,9 +7,10 @@
 function type() {
   poster.textFont(font);
 
-  poster.textAlign(RIGHT, TOP);
+  poster.textAlign(LEFT, TOP);
   poster.rectMode(CORNER);
   poster.textSize(State.fontSize);
+  poster.textLeading(State.lineHeight * State.fontSize);
 
   poster.fill(State.Colors.text);
   poster.push();
@@ -18,15 +19,7 @@ function type() {
   var charPosX = 0;
   var charPosY = 0;
 
-  for (var i = 0; i < State.text.length; i++) {
-    var charW = poster.textWidth(State.text[i]);
-    if (charPosX > posterW - 20) {
-      charPosX = 0;
-      charPosY += State.fontSize * State.lineHeight;
-    }
-    charPosX += charW;
-    poster.text(State.text[i], charPosX, charPosY);
-  }
+  poster.text(State.text, charPosX, charPosY);
 
   poster.pop();
 }

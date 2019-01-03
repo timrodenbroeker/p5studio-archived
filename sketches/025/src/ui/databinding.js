@@ -34,7 +34,7 @@ function databinding() {
     .getElementById("text")
     .querySelector("textarea").oninput = function() {
     // State.text = this.value.toUpperCase();
-    State.text = this.value;
+    State.text = this.value.replace(/\r\n|\r|\n/g, "\n");
     console.log(State.text);
   };
 
