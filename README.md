@@ -2,11 +2,17 @@
 
 ![branding](docs/branding.jpg)
 
-## Why the heck are you building this?
+## "Always be iterating" – Zach Liebermann
 
-Working with p5.js these days is difficult. Even though there's a pretty nice web-editor for the beginners out there, there are no best practices for a workflow for more complex projects yet. The transition between beginners-work and a more advanced setup is too hard. This application aims to change that.
+Working with p5.js these days is still a bit difficult. Even though there's a pretty nice web-editor for the beginners out there, i've missed good solutions for more complex projects.
 
-It supports an iterative and creative development-process with p5.js and any other library as good as possible. It solves numerous problems:
+In the last years i spoke to dozens of creative coders from around the world and most of them confirm, that the transition from beginner to intermediate requires to jump over too mamy obstacles. This causes loss of motivation, which is the reason why many creative coders do not reach over the beginners-level or stop coding at all.
+
+This application aims to change that.
+
+## How it works
+
+p5studio aims to be the perfect foundation for any complex p5.js-project. It solves tons problems:
 
 - It automatically creates a html-file with a overview of all sketch-folders
 - Assets like fonts and images can be saved globally in the data-folder, so all sketches can easily access them. The 'app.js'-script automatically saves all font-filenames in a JSON-file in the fonts-folder, so we are abled to load the fonts asynchronously while running our sketches
