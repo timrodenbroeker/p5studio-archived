@@ -7,12 +7,7 @@
 var imgCounter = 0;
 
 function exportImage() {
-  save("Poster" + imgCounter + ".jpg");
-  imgCounter += 1;
-}
-
-function exportImageWithoutFrame() {
-  saveCanvas(poster, "Poster" + imgCounter + ".jpg");
+  save("out" + imgCounter + ".jpg");
   imgCounter += 1;
 }
 

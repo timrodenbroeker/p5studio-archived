@@ -26,7 +26,6 @@ var gridItemW; // Automated gridRows
 
 var gridRows;
 var img;
-var dropzone;
 var imageFilenames = {};
 var fontFilenames = {}; // The busy-boolean is used to show a loading message while loading and converting
 
@@ -38,9 +37,9 @@ var manipulatedImage;
 var font, metaFont;
 
 function preload() {
-  sourceImage = loadImage("../../assets/images/71.jpg");
-  font = loadFont("../../assets/fonts/Morganite-Black.ttf");
-  metaFont = loadFont("../../assets/fonts/Poppins-Bold.ttf");
+  sourceImage = loadImage("./assets/images/71.jpg");
+  font = loadFont("./assets/fonts/Morganite-Black.ttf");
+  metaFont = loadFont("./assets/fonts/Poppins-Bold.ttf");
   loadFontFiles();
 }
 
@@ -48,7 +47,7 @@ var fontOptionsMarkup;
 
 function loadFontFiles() {
   var markupArray = [];
-  fetch("../../assets/fonts.json").then(response => response.json()).then(json => {
+  fetch("./assets/fonts.json").then(response => response.json()).then(json => {
     for (var i = 0; i < json.length; i++) {
       var filename = json[i];
       markupArray.push("<option>" + filename + "</option>");
@@ -77,24 +76,23 @@ function setup() {
 
   buildUI(); // dust.js
 
-  generateDust(); // dropzone = select("#dropzone");
-  // dropzone.dragOver(dropZoneDragOver);
-  // dropzone.dragLeave(dropZoneDragLeave);
-  // dropzone.drop(receiveImage);
-
-  document.getElementById("intro").classList.remove("visible");
-} // function dropZoneDragOver() {
-//   console.log("drag Over");
-//   dropzone.style("background", "#222222");
-// }
-// function dropZoneDragLeave() {
-//   console.log("drag leave");
-//   dropzone.style("background", "white");
-// }
-// function dropZoneDropped() {
-//   console.log("dropped");
-//   dropzone.style("background", "white");
-// }
+  generateDust();
+} // Function to assign all values from the file-arrays to the gui-select-elements
+// function to(name, seedGroup, seed, number) {
+// 	this.name = name;
+// 	this.seedGroup = seedGroup;
+// 	this.seed = seed;
+// 	}
+// 	var countries = [
+// 	  new to("Austria", 3, 0),
+// 	  new to("Belgium", 1, 1),
+// 	  new to("Bosnia & Herzogovinia", 2, 2)
+// 	];
+// 	var options = '';
+// 	for (var i = 0; i < countries.length; i++) {
+// 	   options += '<option value="'+JSON.stringify(countries[i])+'">'+countries[i].name+'</option>';
+// 	}
+// 	$('select').html(options);
 
 /*
  =========================================
@@ -132,7 +130,7 @@ var State = {
   gridCols: 200,
   maxSize: 7.3,
   Colors: {
-    background: "#ffffff",
+    background: "#f1f1f1",
     text: "#ED0B0A",
     image: "#2103A8"
   }
@@ -146,12 +144,7 @@ var State = {
 var imgCounter = 0;
 
 function exportImage() {
-  save("Poster" + imgCounter + ".jpg");
-  imgCounter += 1;
-}
-
-function exportImageWithoutFrame() {
-  saveCanvas(poster, "Poster" + imgCounter + ".jpg");
+  save("out" + imgCounter + ".jpg");
   imgCounter += 1;
 }
 
@@ -293,7 +286,7 @@ Fetch image
 
 function getNewSourceImage(value) {
   busy = true;
-  sourceImage = loadImage("../../assets/images/" + value, function () {
+  sourceImage = loadImage("./assets/images/" + value, function () {
     console.log(value + " loaded");
     manipulateImage();
   });
@@ -362,15 +355,6 @@ function manipulateImage() {
   }
 
   busy = false;
-} // Get a new source image
-
-
-function receiveImage(file) {
-  busy = true;
-  sourceImage = loadImage(file.data, function () {
-    console.log(file.name + " loaded");
-    manipulateImage();
-  });
 }
 /*
  =========================================
@@ -485,16 +469,12 @@ function buildUI() {
   var markup = `
   <div id="gui">
 
-  <div class="gui-group-branding">
-<div style="margin-bottom: 15px">
-  <h1>LoFi Poster Machine</h1>
-</div>
-<p>By Tim ROdenbröker</p>
-  <p>
-  Web: <a target="_blank" href="https://www.timrodenbroeker.de">www.timrodenbroeker.de</a><br>
-  Mail: <a href="mailto:post@timrodenbroeker.de">post@timrodenbroeker.de</a><br>
-  IG: <a target="_blank" href="https://www.instagram.com/tim_rodenbroeker/">@tim_rodenbroeker</a><br>
-  Version 0.2
+  <div class="gui-group">
+
+  <h4>LO-FI POSTER MACHINE</h4>
+
+  <p>App by <a target="_blank" href="https://www.timrodenbroeker.de">Tim Rodenbröker</a><br>
+  Version 0.1
   </p>
   </div>
 
@@ -504,22 +484,6 @@ function buildUI() {
     ${buildLayerRadio()}
 
     </div>
-
-
-
-
-    <div class="gui-group">
-		<h2>Image</h2>
-      ${buildImageSelectButton()}
-
-			${buildUISlider("imgW", "width", 0, 1400, 1, State.width)}
-			${buildUISlider("gridCols", "tiles", 20, 260, 1, State.gridCols)}
-      ${buildUISlider("imgMaxS", "tilesize", 0.1, 12, 0.01, State.maxSize)}
-
-		</div>
-
-
-
     <div class="gui-group">
   <h2>Headline</h2>
       
@@ -558,8 +522,6 @@ function buildUI() {
         </div>
         <div class="gui-val"></div>
         </div>
-
-
       <div class="gui-wrapper">
       <div class="gui-label">Image</div>
         <div class="gui-input">
@@ -572,6 +534,14 @@ function buildUI() {
 
 		</div>
 
+		<div class="gui-group">
+		<h2>Image</h2>
+			${buildImageSelectButton()}
+			${buildUISlider("imgW", "width", 0, 1400, 1, State.width)}
+			${buildUISlider("gridCols", "tiles", 20, 200, 1, State.gridCols)}
+      ${buildUISlider("imgMaxS", "tilesize", 0.1, 12, 0.01, State.maxSize)}
+
+		</div>
 
     <div class="gui-group">
     <h2>Save</h2>
@@ -580,15 +550,6 @@ function buildUI() {
       <div class="gui-label">Export</div>
         <div class="gui-input">
          <button onclick="exportImage()">Save JPG</button>
-        </div>
-        <div class="gui-val"></div>
-      </div>
-
-
-      <div class="gui-wrapper">
-      <div class="gui-label">Export</div>
-        <div class="gui-input">
-         <button onclick="exportImageWithoutFrame()">Save JPG without frame</button>
         </div>
         <div class="gui-val"></div>
       </div>
@@ -652,7 +613,7 @@ function databinding() {
 
   document.getElementById("fonts").querySelector("select").onchange = function () {
     var newFont = this.options[this.selectedIndex].value;
-    font = loadFont("../../assets/fonts/" + newFont);
+    font = loadFont("./assets/fonts/" + newFont);
     console.log(newFont);
   }; // Font-size
 
@@ -759,23 +720,6 @@ function download(content, fileName, contentType) {
   a.href = URL.createObjectURL(file);
   a.download = fileName;
   a.click();
-} // Image Drop Zone
-
-
-function loadImageFile() {
-  // var preview = document.querySelector("img"); //selects the query named img
-  var file = document.querySelector("input[type=file]").files[0]; //sames as here
-
-  var reader = new FileReader();
-
-  reader.onloadend = function () {
-    console.log(reader.result);
-  };
-
-  if (file) {
-    reader.readAsDataURL(file); //reads the data as a URL
-  } else {// preview.src = "";
-    }
 }
 
 function createPickrs() {
@@ -1040,19 +984,6 @@ function buildExportTool() {
   return tmplt;
 }
 
-function buildImageDropZone() {
-  var tmplt = `
-      <div class="gui-wrapper" id="imageDropZone">
-          <div class="gui-label">Custom</div>
-          <div class="gui-input">
-              <input type="file" onchange="loadImageFile()">
-          </div>
-          <div class="gui-val"></div>
-      </div>
-      `;
-  return tmplt;
-}
-
 function buildImageSelectButton() {
   var tmplt = `
 		<div class="gui-wrapper" id="imageSelectButton">
@@ -1070,13 +1001,13 @@ function buildImageSelectButton() {
 function buildImagesOverlay() {
   var markupArray = []; // Fetch JSON-file which contains all the filenames of the images
 
-  fetch("../../assets/images.json").then(response => response.json()) // Loop through the array
+  fetch("./assets/images.json").then(response => response.json()) // Loop through the array
   // and push markup to the markup-array
   .then(json => {
     for (var i = 0; i < json.length; i++) {
       var filename = json[i];
       markupArray.push(`
-				<button data-image="${filename}"><img src="../../assets/images/${filename}"></button>
+				<button data-image="${filename}"><img src="./assets/images/${filename}"></button>
 			`);
     } // Convert thte markup-array to a string
 

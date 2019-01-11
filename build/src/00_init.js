@@ -38,5 +38,3 @@ var gridItemW;
 // Automated gridRows
 var gridRows;
 var img;
-
-var dropzone;

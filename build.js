@@ -5,6 +5,7 @@
 
 // Now: Copy an paste everything to the build-folder to keep everything synched
 
+var folderName = "025";
 var ncp = require("ncp").ncp;
 
 ncp.limit = 16;

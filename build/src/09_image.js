@@ -102,13 +102,3 @@ function manipulateImage() {
 
   busy = false;
 }
-
-// Get a new source image
-function receiveImage(file) {
-  busy = true;
-  sourceImage = loadImage(file.data, function() {
-    console.log(file.name + " loaded");
-
-    manipulateImage();
-  });
-}

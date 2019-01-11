@@ -485,11 +485,11 @@ function buildUI() {
   var markup = `
   <div id="gui">
 
-  <div class="gui-group-branding">
+  <div class="gui-group">
 <div style="margin-bottom: 15px">
   <h1>LoFi Poster Machine</h1>
 </div>
-<p>By Tim ROdenbröker</p>
+<p>By Tim Rodenbröker</p>
   <p>
   Web: <a target="_blank" href="https://www.timrodenbroeker.de">www.timrodenbroeker.de</a><br>
   Mail: <a href="mailto:post@timrodenbroeker.de">post@timrodenbroeker.de</a><br>

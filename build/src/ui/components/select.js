@@ -1,9 +1,15 @@
-function buildTextInput(id, label, val) {
+function buildSelect(id, label, data) {
   var tmplt = `
 	<div class="gui-wrapper" id="${id}">
 		<div class="gui-label">${label}</div>
 		<div class="gui-input">
-			<textarea placeholder="Write something!" onkeyup="this.value" value="${val}" rows="3"/>
+
+			<select>
+
+				${data}
+
+			</select>
+
 		</div>
 		<div class="gui-val"></div>
 	</div>

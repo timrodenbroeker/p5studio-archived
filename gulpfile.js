@@ -3,7 +3,7 @@
 // GULP
 // Define the foldername of the sketch to be used
 
-let folderName = "025";
+let folderName = "026";
 
 /**
  * END Ask for the skecthfolder

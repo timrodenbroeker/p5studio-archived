@@ -15,16 +15,12 @@ function buildUI() {
   var markup = `
   <div id="gui">
 
-  <div class="gui-group-branding">
-<div style="margin-bottom: 15px">
-  <h1>LoFi Poster Machine</h1>
-</div>
-<p>By Tim ROdenbröker</p>
-  <p>
-  Web: <a target="_blank" href="https://www.timrodenbroeker.de">www.timrodenbroeker.de</a><br>
-  Mail: <a href="mailto:post@timrodenbroeker.de">post@timrodenbroeker.de</a><br>
-  IG: <a target="_blank" href="https://www.instagram.com/tim_rodenbroeker/">@tim_rodenbroeker</a><br>
-  Version 0.2
+  <div class="gui-group">
+
+  <h4>LO-FI POSTER MACHINE</h4>
+
+  <p>App by <a target="_blank" href="https://www.timrodenbroeker.de">Tim Rodenbröker</a><br>
+  Version 0.1
   </p>
   </div>
 
@@ -34,22 +30,6 @@ function buildUI() {
     ${buildLayerRadio()}
 
     </div>
-
-
-
-
-    <div class="gui-group">
-		<h2>Image</h2>
-      ${buildImageSelectButton()}
-
-			${buildUISlider("imgW", "width", 0, 1400, 1, State.width)}
-			${buildUISlider("gridCols", "tiles", 20, 260, 1, State.gridCols)}
-      ${buildUISlider("imgMaxS", "tilesize", 0.1, 12, 0.01, State.maxSize)}
-
-		</div>
-
-
-
     <div class="gui-group">
   <h2>Headline</h2>
       
@@ -95,8 +75,6 @@ function buildUI() {
         </div>
         <div class="gui-val"></div>
         </div>
-
-
       <div class="gui-wrapper">
       <div class="gui-label">Image</div>
         <div class="gui-input">
@@ -109,6 +87,14 @@ function buildUI() {
 
 		</div>
 
+		<div class="gui-group">
+		<h2>Image</h2>
+			${buildImageSelectButton()}
+			${buildUISlider("imgW", "width", 0, 1400, 1, State.width)}
+			${buildUISlider("gridCols", "tiles", 20, 200, 1, State.gridCols)}
+      ${buildUISlider("imgMaxS", "tilesize", 0.1, 12, 0.01, State.maxSize)}
+
+		</div>
 
     <div class="gui-group">
     <h2>Save</h2>
@@ -117,15 +103,6 @@ function buildUI() {
       <div class="gui-label">Export</div>
         <div class="gui-input">
          <button onclick="exportImage()">Save JPG</button>
-        </div>
-        <div class="gui-val"></div>
-      </div>
-
-
-      <div class="gui-wrapper">
-      <div class="gui-label">Export</div>
-        <div class="gui-input">
-         <button onclick="exportImageWithoutFrame()">Save JPG without frame</button>
         </div>
         <div class="gui-val"></div>
       </div>

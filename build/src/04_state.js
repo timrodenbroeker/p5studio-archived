@@ -32,5 +32,5 @@ var State = {
   width: 1122,
   gridCols: 200,
   maxSize: 7.3,
-  Colors: { background: "#ffffff", text: "#ED0B0A", image: "#2103A8" }
+  Colors: { background: "#f1f1f1", text: "#ED0B0A", image: "#2103A8" }
 };
